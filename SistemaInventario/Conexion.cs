@@ -10,7 +10,7 @@ namespace SistemaInventario
     public class Conexion
     {
         public static SqlConnection cn = new SqlConnection(
-            @"Data Source=DESKTOP-FLPOK2F\SQLEXPRESS01;Initial Catalog=Nuevo_Proyecto;Integrated Security=True"
+            @"Data Source=DESKTOP-FLPOK2F\SQLEXPRESS01;Initial Catalog=Proyecto_FinalG2;Integrated Security=True"
         );
     }
 }
