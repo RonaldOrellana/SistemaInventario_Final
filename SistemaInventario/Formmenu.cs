@@ -40,5 +40,20 @@ namespace SistemaInventario
             FormVentas frm = new FormVentas();
             frm.Show();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btncreacuent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

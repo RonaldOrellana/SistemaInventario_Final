@@ -120,17 +120,20 @@ namespace SistemaInventario
                         sql = $"INSERT INTO {Tabla} ({ColCodigo}, {ColDescripcion}) VALUES (@codigo, @descripcion)";
                     else
                         sql = $"INSERT INTO {Tabla} ({ColDescripcion}) VALUES (@descripcion)";
+                        
+using (var cn = Conexion.GetConnection())
+{
+    using (var cmd = new SqlCommand(sql, cn))
+    {
+        cmd.Parameters.AddWithValue("@descripcion", descripcion);
+        if (!string.IsNullOrWhiteSpace(codigo))
+            cmd.Parameters.AddWithValue("@codigo", codigo);
 
-                    using (var cmd = new SqlCommand(sql, Conexion.cn))
-                    {
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion);
-                        if (!string.IsNullOrWhiteSpace(codigo))
-                            cmd.Parameters.AddWithValue("@codigo", codigo);
-
-                        if (Conexion.cn.State != ConnectionState.Open) Conexion.cn.Open();
-                        cmd.ExecuteNonQuery();
-                        Conexion.cn.Close();
-                    }
+        if (cn.State != ConnectionState.Open) cn.Open();
+        cmd.ExecuteNonQuery();
+        cn.Close();
+    }
+}
                 }
                 else if (modoActual == Modo.Editar)
                 {
@@ -140,13 +143,13 @@ namespace SistemaInventario
                         return;
                     }
 
-                    using (var cmd = new SqlCommand($"UPDATE {Tabla} SET {ColDescripcion} = @descripcion WHERE {ColCodigo} = @codigo", Conexion.cn))
+                    using (var cmd = new SqlCommand($"UPDATE {Tabla} SET {ColDescripcion} = @descripcion WHERE {ColCodigo} = @codigo", Conexion.GetConnection()))
                     {
                         cmd.Parameters.AddWithValue("@descripcion", descripcion);
                         cmd.Parameters.AddWithValue("@codigo", codigo);
-                        if (Conexion.cn.State != ConnectionState.Open) Conexion.cn.Open();
+                        if (Conexion.GetConnection().State != ConnectionState.Open) Conexion.GetConnection().Open();
                         cmd.ExecuteNonQuery();
-                        Conexion.cn.Close();
+                        Conexion.GetConnection().Close();
                     }
                 }
 
@@ -199,12 +202,12 @@ namespace SistemaInventario
 
             try
             {
-                using (var cmd = new SqlCommand($"DELETE FROM {Tabla} WHERE {ColCodigo} = @codigo", Conexion.cn))
+                using (var cmd = new SqlCommand($"DELETE FROM {Tabla} WHERE {ColCodigo} = @codigo", Conexion.GetConnection()))
                 {
                     cmd.Parameters.AddWithValue("@codigo", codigo);
-                    if (Conexion.cn.State != ConnectionState.Open) Conexion.cn.Open();
+                    if (Conexion.GetConnection().State != ConnectionState.Open) Conexion.GetConnection().Open();
                     cmd.ExecuteNonQuery();
-                    Conexion.cn.Close();
+                    Conexion.GetConnection().Close();
                 }
 
                 MessageBox.Show("Categoría eliminada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -249,7 +252,7 @@ namespace SistemaInventario
                 var dt = new DataTable();
                 using (var cmd = new SqlCommand(
                     $"SELECT {ColCodigo} AS Codigo, {ColDescripcion} AS Descripcion FROM {Tabla} " +
-                    $"WHERE {ColDescripcion} LIKE @f OR CAST({ColCodigo} AS VARCHAR(50)) LIKE @f", Conexion.cn))
+                    $"WHERE {ColDescripcion} LIKE @f OR CAST({ColCodigo} AS VARCHAR(50)) LIKE @f", Conexion.GetConnection()))
                 {
                     cmd.Parameters.AddWithValue("@f", $"%{filtro}%");
                     using (var da = new SqlDataAdapter(cmd))
@@ -276,5 +279,10 @@ namespace SistemaInventario
 
         private void label1_Click(object sender, EventArgs e) { }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void FormCategorias_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

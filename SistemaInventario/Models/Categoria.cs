@@ -10,7 +10,6 @@ namespace SistemaInventario.Models
         [Required]
         public string Descripcion { get; set; }
 
-        // Nuevo: Estado (true = activo, false = inactivo)
         public bool Estado { get; set; } = true;
     }
 }

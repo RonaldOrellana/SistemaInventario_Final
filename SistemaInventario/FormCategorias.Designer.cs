@@ -182,6 +182,7 @@
             this.Controls.Add(this.ntnnuevo);
             this.Name = "FormCategorias";
             this.Text = "Inventario | Categorias";
+            this.Load += new System.EventHandler(this.FormCategorias_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcategorias)).EndInit();

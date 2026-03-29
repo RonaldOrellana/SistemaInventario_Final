@@ -1,5 +1,5 @@
--- Ejecutar en la base de datos apuntada por Conexion.cn (Initial Catalog=Nuevo_Proyecto)
--- Crea las tablas necesarias: Categorias, Productos, Clientes, Ventas, VentaDetalles
+-- Ejecutar en la base de datos apuntada por Conexion.cs (Initial Catalog=Proyecto_FinalG2)
+-- Crea las tablas necesarias: Categorias, Productos, Clientes, Ventas, VentaDetalles, Usuarios
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Categorias]') AND type = N'U')
 BEGIN
@@ -62,18 +62,14 @@ BEGIN
 END
 GO
 
--- (Código de la interfaz en C#, no SQL)
-private System.Windows.Forms.Button ntnnuevo;
-private System.Windows.Forms.Button btnmodificar;
-private System.Windows.Forms.Button btneliminar;
-private System.Windows.Forms.Button btnguardar;
-private System.Windows.Forms.Button btncancelar;
-private System.Windows.Forms.Label label1;
-private System.Windows.Forms.Label label2;
-private System.Windows.Forms.TextBox textBox1;
-private System.Windows.Forms.TextBox textBox2;
-private System.Windows.Forms.GroupBox groupBox1;
-private System.Windows.Forms.TextBox textBox3;
-private System.Windows.Forms.Label label3;
-private System.Windows.Forms.DataGridView dgvcategorias;
-private System.Windows.Forms.CheckBox checkBoxEstado;
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Usuarios]') AND type = N'U')
+BEGIN
+    CREATE TABLE [dbo].[Usuarios](
+        [Id] INT IDENTITY(1,1) PRIMARY KEY,
+        [NombreUsuario] NVARCHAR(100) NOT NULL,
+        [PasswordHash] NVARCHAR(MAX) NOT NULL,
+        [Nombre] NVARCHAR(100) NULL,
+        [Rol] NVARCHAR(50) NULL
+    );
+END
+GO
