@@ -60,12 +60,17 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="Data\CategoriaRepository.cs" />
     <Compile Include="Data\ProductoRepository.cs" />
+    <Compile Include="Data\VentaRepository.cs" />
     <Compile Include="FormCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCategorias.Designer.cs">
       <DependentUpon>FormCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormListadoVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListadoVentas.Designer.cs" />
     <Compile Include="Formmenu.cs">
       <SubType>Form</SubType>
     </Compile>
