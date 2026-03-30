@@ -39,15 +39,16 @@
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtprecio = new System.Windows.Forms.TextBox();
-            this.txtstock = new System.Windows.Forms.DomainUpDown();
+            this.txtstock = new System.Windows.Forms.NumericUpDown();
             this.cbcategoria = new System.Windows.Forms.ComboBox();
             this.btnguardar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtbuscar = new System.Windows.Forms.TextBox();
             this.dgvproducto = new System.Windows.Forms.DataGridView();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.txtstock)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvproducto)).BeginInit();
             this.SuspendLayout();
@@ -149,10 +150,14 @@
             // txtstock
             // 
             this.txtstock.Location = new System.Drawing.Point(149, 232);
+            this.txtstock.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.txtstock.Name = "txtstock";
             this.txtstock.Size = new System.Drawing.Size(120, 22);
             this.txtstock.TabIndex = 32;
-            this.txtstock.Text = "0";
             // 
             // cbcategoria
             // 
@@ -202,22 +207,6 @@
             this.groupBox1.Text = "Listado de los Productos";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(49, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Buscar :";
-            // 
-            // txtbuscar
-            // 
-            this.txtbuscar.Location = new System.Drawing.Point(125, 35);
-            this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(192, 22);
-            this.txtbuscar.TabIndex = 1;
-            // 
             // dgvproducto
             // 
             this.dgvproducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -228,10 +217,27 @@
             this.dgvproducto.Size = new System.Drawing.Size(355, 284);
             this.dgvproducto.TabIndex = 2;
             // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Location = new System.Drawing.Point(125, 35);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(192, 22);
+            this.txtbuscar.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(49, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 16);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Buscar :";
+            // 
             // FormProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
@@ -253,6 +259,7 @@
             this.Name = "FormProductos";
             this.Text = "FromProductos";
             this.Load += new System.EventHandler(this.FormProductos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtstock)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvproducto)).EndInit();
@@ -274,7 +281,7 @@
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.TextBox txtprecio;
-        private System.Windows.Forms.DomainUpDown txtstock;
+        private System.Windows.Forms.NumericUpDown txtstock;
         private System.Windows.Forms.ComboBox cbcategoria;
         private System.Windows.Forms.Button btnguardar;
         private System.Windows.Forms.Button btncancelar;

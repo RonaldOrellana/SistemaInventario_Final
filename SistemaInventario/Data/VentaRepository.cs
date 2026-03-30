@@ -47,5 +47,35 @@ namespace SistemaInventario.Data
             }
             return dt;
         }
+
+        public static int InsertVenta(int? clienteId, decimal total)
+        {
+            using (var cn = Conexion.GetConnection())
+            using (var cmd = new SqlCommand("dbo.usp_Venta_Insert", cn) { CommandType = CommandType.StoredProcedure })
+            {
+                cmd.Parameters.AddWithValue("@ClienteId", (object)clienteId ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Total", total);
+                var p = new SqlParameter("@NewId", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                cmd.Parameters.Add(p);
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                return (int)(p.Value ?? 0);
+            }
+        }
+
+        public static void InsertDetalle(int ventaId, int productoCodigo, int cantidad, decimal precio, decimal subtotal)
+        {
+            using (var cn = Conexion.GetConnection())
+            using (var cmd = new SqlCommand("dbo.usp_VentaDetalle_Insert", cn) { CommandType = CommandType.StoredProcedure })
+            {
+                cmd.Parameters.AddWithValue("@VentaId", ventaId);
+                cmd.Parameters.AddWithValue("@ProductoCodigo", productoCodigo);
+                cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                cmd.Parameters.AddWithValue("@Precio", precio);
+                cmd.Parameters.AddWithValue("@Subtotal", subtotal);
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

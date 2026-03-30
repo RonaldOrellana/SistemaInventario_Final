@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="Data\CategoriaRepository.cs" />
+    <Compile Include="Data\ClienteRepository.cs" />
     <Compile Include="Data\ProductoRepository.cs" />
     <Compile Include="Data\VentaRepository.cs" />
     <Compile Include="FormCategorias.cs">
@@ -121,11 +122,20 @@
     <EmbeddedResource Include="FormCategorias.resx">
       <DependentUpon>FormCategorias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormClientes.resx">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListadoVentas.resx">
+      <DependentUpon>FormListadoVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formmenu.resx">
       <DependentUpon>Formmenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProductos.resx">
       <DependentUpon>FormProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVentas.resx">
+      <DependentUpon>FormVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

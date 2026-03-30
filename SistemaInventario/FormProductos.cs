@@ -50,7 +50,7 @@ namespace SistemaInventario
         {
             if (dgvproducto.Columns["Codigo"] != null)
             {
-                dgvproducto.Columns["Codigo"].HeaderText = "Código";
+                    dgvproducto.Columns["Codigo"].HeaderText = "Código";
                 dgvproducto.Columns["Codigo"].Width = 70;
                 dgvproducto.Columns["Codigo"].ReadOnly = true;
             }
@@ -152,8 +152,8 @@ namespace SistemaInventario
         {
             txtcodigo.Text = string.Empty;
             txtnombre.Text = string.Empty;
-            txtprecio.Text = string.Empty; txtstock.Text = string.Empty;
-            txtstock.Text = string.Empty;
+            txtprecio.Text = string.Empty;
+            txtstock.Value = 0;
             cbcategoria.Text = string.Empty;
             dgvproducto.ClearSelection();
         }
@@ -171,7 +171,15 @@ namespace SistemaInventario
                 txtcodigo.Text = row.Cells["Codigo"].Value?.ToString() ?? string.Empty;
                 txtnombre.Text = row.Cells["Nombre"].Value?.ToString() ?? string.Empty;
                 txtprecio.Text = row.Cells["Precio"].Value?.ToString() ?? string.Empty;
-                txtstock.Text = row.Cells["Stock"].Value?.ToString() ?? string.Empty;
+
+                // Cargar stock con Value (NumericUpDown)
+                int stockValue = 0;
+                if (row.Cells["Stock"].Value != null && row.Cells["Stock"].Value != DBNull.Value)
+                {
+                    int.TryParse(row.Cells["Stock"].Value.ToString(), out stockValue);
+                }
+                txtstock.Value = stockValue;
+
                 cbcategoria.Text = row.Cells["Categoria"].Value?.ToString() ?? string.Empty;
                 EstablecerModo(Modo.Ninguno);
             }
@@ -190,11 +198,8 @@ namespace SistemaInventario
                 MessageBox.Show("Ingrese un precio válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!int.TryParse(txtstock.Text, out int stock))
-            {
-                MessageBox.Show("Ingrese un stock válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+
+            int stock = (int)txtstock.Value;
 
             int? categoriaCodigo = CategoriaRepository.GetSelectedValue(cbcategoria.SelectedValue);
 

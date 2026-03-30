@@ -16,5 +16,10 @@ namespace SistemaInventario
         {
             InitializeComponent();
         }
+
+        private void FormClientes_Load(object sender, EventArgs e)
+        {
+            // Inicialización necesaria al cargar el formulario
+        }
     }
 }
