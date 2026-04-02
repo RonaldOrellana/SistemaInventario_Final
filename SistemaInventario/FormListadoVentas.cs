@@ -133,17 +133,5 @@ namespace SistemaInventario
             dgvDetalle.DataSource = null;
             lblTotalVenta.Text = "Total: $0.00";
         }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // FormListadoVentas
-            // 
-            this.ClientSize = new System.Drawing.Size(390, 253);
-            this.Name = "FormListadoVentas";
-            this.ResumeLayout(false);
-
-        }
     }
 }

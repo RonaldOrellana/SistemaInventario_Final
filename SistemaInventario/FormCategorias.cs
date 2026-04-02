@@ -7,12 +7,10 @@ namespace SistemaInventario
 {
     public partial class FormCategorias : Form
     {
-        // Usar nombres totalmente calificados / escapados para evitar problemas de esquema o mayúsculas
         private const string Tabla = "[dbo].[Categorias]";
         private const string ColCodigo = "[Codigo]";
         private const string ColDescripcion = "[Descripcion]";
-        private const string ColEstado = "[Estado]"; // <-- añadido
-        
+
         private enum Modo { Ninguno, Nuevo, Editar }
         private Modo modoActual = Modo.Ninguno;
 
@@ -20,16 +18,17 @@ namespace SistemaInventario
         {
             InitializeComponent();
 
-            // Suscribir eventos
-            ntnnuevo.Click += ntnnuevo_Click;
+            btnnuevo.Click += btnnuevo_Click;
             btnguardar.Click += btnguardar_Click;
             btnmodificar.Click += btnmodificar_Click;
             btneliminar.Click += btneliminar_Click;
             btncancelar.Click += btncancelar_Click;
             dgvcategorias.CellClick += dgvcategorias_CellClick;
             textBox3.TextChanged += (s, e) => CargarCategorias(textBox3.Text.Trim());
+        }
 
-            // Estado inicial
+        private void FormCategorias_Load(object sender, EventArgs e)
+        {
             LimpiarCampos();
             CargarCategorias("");
             EstablecerEstado(Modo.Ninguno);
@@ -48,7 +47,7 @@ namespace SistemaInventario
                     textBox2.Visible = true;
                     textBox2.Enabled = true;
 
-                    ntnnuevo.Enabled = false;
+                    btnnuevo.Enabled = false;
                     btnguardar.Enabled = true;
                     btncancelar.Enabled = true;
                     btnmodificar.Enabled = false;
@@ -65,7 +64,7 @@ namespace SistemaInventario
                     textBox2.Visible = true;
                     textBox2.Enabled = true;
 
-                    ntnnuevo.Enabled = false;
+                    btnnuevo.Enabled = false;
                     btnguardar.Enabled = true;
                     btncancelar.Enabled = true;
                     btnmodificar.Enabled = false;
@@ -82,7 +81,7 @@ namespace SistemaInventario
                     textBox2.Visible = true;
                     textBox2.Enabled = false;
 
-                    ntnnuevo.Enabled = true;
+                    btnnuevo.Enabled = true;
                     btnguardar.Enabled = false;
                     btncancelar.Enabled = false;
                     dgvcategorias.Enabled = true;
@@ -94,7 +93,7 @@ namespace SistemaInventario
             }
         }
 
-        private void ntnnuevo_Click(object sender, EventArgs e)
+        private void btnnuevo_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
             EstablecerEstado(Modo.Nuevo);
@@ -113,43 +112,35 @@ namespace SistemaInventario
 
             try
             {
-                if (modoActual == Modo.Nuevo)
+                using (var cn = Conexion.GetConnection())
                 {
-                    string sql;
-                    if (!string.IsNullOrWhiteSpace(codigo))
-                        sql = $"INSERT INTO {Tabla} ({ColCodigo}, {ColDescripcion}) VALUES (@codigo, @descripcion)";
-                    else
-                        sql = $"INSERT INTO {Tabla} ({ColDescripcion}) VALUES (@descripcion)";
-                        
-using (var cn = Conexion.GetConnection())
-{
-    using (var cmd = new SqlCommand(sql, cn))
-    {
-        cmd.Parameters.AddWithValue("@descripcion", descripcion);
-        if (!string.IsNullOrWhiteSpace(codigo))
-            cmd.Parameters.AddWithValue("@codigo", codigo);
+                    cn.Open();
 
-        if (cn.State != ConnectionState.Open) cn.Open();
-        cmd.ExecuteNonQuery();
-        cn.Close();
-    }
-}
-                }
-                else if (modoActual == Modo.Editar)
-                {
-                    if (string.IsNullOrWhiteSpace(codigo))
+                    if (modoActual == Modo.Nuevo)
                     {
-                        MessageBox.Show("Código inválido para actualizar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        string sql = $"INSERT INTO {Tabla} ({ColDescripcion}) VALUES (@descripcion)";
+
+                        using (var cmd = new SqlCommand(sql, cn))
+                        {
+                            cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
-
-                    using (var cmd = new SqlCommand($"UPDATE {Tabla} SET {ColDescripcion} = @descripcion WHERE {ColCodigo} = @codigo", Conexion.GetConnection()))
+                    else if (modoActual == Modo.Editar)
                     {
-                        cmd.Parameters.AddWithValue("@descripcion", descripcion);
-                        cmd.Parameters.AddWithValue("@codigo", codigo);
-                        if (Conexion.GetConnection().State != ConnectionState.Open) Conexion.GetConnection().Open();
-                        cmd.ExecuteNonQuery();
-                        Conexion.GetConnection().Close();
+                        if (string.IsNullOrWhiteSpace(codigo))
+                        {
+                            MessageBox.Show("Código inválido para actualizar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        using (var cmd = new SqlCommand(
+                            $"UPDATE {Tabla} SET {ColDescripcion} = @descripcion WHERE {ColCodigo} = @codigo", cn))
+                        {
+                            cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                            cmd.Parameters.AddWithValue("@codigo", codigo);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
 
@@ -160,7 +151,6 @@ using (var cn = Conexion.GetConnection())
             }
             catch (SqlException sqlEx)
             {
-                // Mostrar detalle de SQL para depuración
                 MessageBox.Show("Error al guardar los datos (SQL): " + sqlEx.Message, "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -176,6 +166,7 @@ using (var cn = Conexion.GetConnection())
                 MessageBox.Show("Selecciona una categoría para modificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             EstablecerEstado(Modo.Editar);
         }
 
@@ -202,12 +193,15 @@ using (var cn = Conexion.GetConnection())
 
             try
             {
-                using (var cmd = new SqlCommand($"DELETE FROM {Tabla} WHERE {ColCodigo} = @codigo", Conexion.GetConnection()))
+                using (var cn = Conexion.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@codigo", codigo);
-                    if (Conexion.GetConnection().State != ConnectionState.Open) Conexion.GetConnection().Open();
-                    cmd.ExecuteNonQuery();
-                    Conexion.GetConnection().Close();
+                    cn.Open();
+
+                    using (var cmd = new SqlCommand($"DELETE FROM {Tabla} WHERE {ColCodigo} = @codigo", cn))
+                    {
+                        cmd.Parameters.AddWithValue("@codigo", codigo);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
 
                 MessageBox.Show("Categoría eliminada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -230,6 +224,7 @@ using (var cn = Conexion.GetConnection())
         private void dgvcategorias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
+
             var row = dgvcategorias.Rows[e.RowIndex];
             textBox1.Text = row.Cells["Codigo"].Value?.ToString();
             textBox2.Text = row.Cells["Descripcion"].Value?.ToString();
@@ -250,14 +245,22 @@ using (var cn = Conexion.GetConnection())
             try
             {
                 var dt = new DataTable();
-                using (var cmd = new SqlCommand(
-                    $"SELECT {ColCodigo} AS Codigo, {ColDescripcion} AS Descripcion FROM {Tabla} " +
-                    $"WHERE {ColDescripcion} LIKE @f OR CAST({ColCodigo} AS VARCHAR(50)) LIKE @f", Conexion.GetConnection()))
+
+                using (var cn = Conexion.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@f", $"%{filtro}%");
-                    using (var da = new SqlDataAdapter(cmd))
+                    string sql =
+                        $"SELECT {ColCodigo} AS Codigo, {ColDescripcion} AS Descripcion " +
+                        $"FROM {Tabla} " +
+                        $"WHERE {ColDescripcion} LIKE @f OR CAST({ColCodigo} AS VARCHAR(50)) LIKE @f";
+
+                    using (var cmd = new SqlCommand(sql, cn))
                     {
-                        da.Fill(dt);
+                        cmd.Parameters.AddWithValue("@f", $"%{filtro}%");
+
+                        using (var da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dt);
+                        }
                     }
                 }
 
@@ -275,14 +278,6 @@ using (var cn = Conexion.GetConnection())
             {
                 MessageBox.Show("Error cargando categorías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e) { }
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { }
-
-        private void FormCategorias_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

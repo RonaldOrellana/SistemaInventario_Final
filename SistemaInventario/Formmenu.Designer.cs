@@ -269,7 +269,7 @@
             this.btncreacuent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btncreacuent.BackgroundImage")));
             this.btncreacuent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btncreacuent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btncreacuent.Location = new System.Drawing.Point(576, 144);
+            this.btncreacuent.Location = new System.Drawing.Point(585, 144);
             this.btncreacuent.Name = "btncreacuent";
             this.btncreacuent.Size = new System.Drawing.Size(67, 49);
             this.btncreacuent.TabIndex = 13;
@@ -281,7 +281,8 @@
             this.btnlistacuenta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlistacuenta.BackgroundImage")));
             this.btnlistacuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnlistacuenta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnlistacuenta.Location = new System.Drawing.Point(669, 144);
+            this.btnlistacuenta.Enabled = true;
+            this.btnlistacuenta.Location = new System.Drawing.Point(698, 144);
             this.btnlistacuenta.Name = "btnlistacuenta";
             this.btnlistacuenta.Size = new System.Drawing.Size(67, 49);
             this.btnlistacuenta.TabIndex = 14;
@@ -292,7 +293,7 @@
             // 
             this.Label14.AutoSize = true;
             this.Label14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Label14.Location = new System.Drawing.Point(573, 196);
+            this.Label14.Location = new System.Drawing.Point(582, 196);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(82, 16);
             this.Label14.TabIndex = 16;
@@ -304,7 +305,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label8.Location = new System.Drawing.Point(666, 196);
+            this.label8.Location = new System.Drawing.Point(695, 196);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(115, 16);
             this.label8.TabIndex = 17;
