@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Data;
 
@@ -32,7 +27,6 @@ namespace SistemaInventario
         private void FormProductos_Load(object sender, EventArgs e)
         {
             CargarProductos();
-            ConfigurarColumnas();
             Limpiar();
             EstablecerModo(Modo.Ninguno);
             CargarCategorias();
@@ -50,7 +44,7 @@ namespace SistemaInventario
         {
             if (dgvproducto.Columns["Codigo"] != null)
             {
-                    dgvproducto.Columns["Codigo"].HeaderText = "Código";
+                dgvproducto.Columns["Codigo"].HeaderText = "Código";
                 dgvproducto.Columns["Codigo"].Width = 70;
                 dgvproducto.Columns["Codigo"].ReadOnly = true;
             }
@@ -161,6 +155,39 @@ namespace SistemaInventario
         private void CargarProductos()
         {
             dgvproducto.DataSource = ProductoRepository.GetAll();
+            ConfigurarColumnas();
+            PintarFilasStock();
+        }
+
+        private void PintarFilasStock()
+        {
+            foreach (DataGridViewRow row in dgvproducto.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+
+                int stock = 0;
+                object valorStock = row.Cells["Stock"].Value;
+
+                if (valorStock != null && valorStock != DBNull.Value)
+                    int.TryParse(valorStock.ToString(), out stock);
+
+                if (stock <= 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                }
+                else if (stock <= 2)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Khaki;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
         }
 
         private void DgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -172,13 +199,19 @@ namespace SistemaInventario
                 txtnombre.Text = row.Cells["Nombre"].Value?.ToString() ?? string.Empty;
                 txtprecio.Text = row.Cells["Precio"].Value?.ToString() ?? string.Empty;
 
-                // Cargar stock con Value (NumericUpDown)
                 int stockValue = 0;
                 if (row.Cells["Stock"].Value != null && row.Cells["Stock"].Value != DBNull.Value)
                 {
                     int.TryParse(row.Cells["Stock"].Value.ToString(), out stockValue);
                 }
-                txtstock.Value = stockValue;
+
+                decimal stockSeguro = stockValue;
+                if (stockSeguro < (decimal)txtstock.Minimum)
+                    stockSeguro = (decimal)txtstock.Minimum;
+                if (stockSeguro > (decimal)txtstock.Maximum)
+                    stockSeguro = (decimal)txtstock.Maximum;
+
+                txtstock.Value = stockSeguro;
 
                 cbcategoria.Text = row.Cells["Categoria"].Value?.ToString() ?? string.Empty;
                 EstablecerModo(Modo.Ninguno);
@@ -187,7 +220,6 @@ namespace SistemaInventario
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            // Validaciones básicas
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
             {
                 MessageBox.Show("Ingrese el nombre del producto.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -200,7 +232,6 @@ namespace SistemaInventario
             }
 
             int stock = (int)txtstock.Value;
-
             int? categoriaCodigo = CategoriaRepository.GetSelectedValue(cbcategoria.SelectedValue);
 
             try
@@ -238,7 +269,6 @@ namespace SistemaInventario
         {
             var dt = CategoriaRepository.GetAll();
 
-            // Fila vacía para permitir "sin categoría"
             var row = dt.NewRow();
             row["Codigo"] = DBNull.Value;
             row["Descripcion"] = "(Sin categoría)";

@@ -10,6 +10,9 @@ namespace SistemaInventario
         private enum Modo { Ninguno, Nuevo, Editar }
         private Modo modoActual = Modo.Ninguno;
 
+        // Guarda el ID real de la BD, aunque en pantalla se muestre el N° consecutivo
+        private int codigoClienteSeleccionado = 0;
+
         public FormClientes()
         {
             InitializeComponent();
@@ -61,14 +64,42 @@ namespace SistemaInventario
         private void CargarClientes()
         {
             string filtro = txtBuscar.Text.Trim();
-            dgvClientes.DataSource = string.IsNullOrEmpty(filtro)
+
+            DataTable dt = string.IsNullOrEmpty(filtro)
                 ? ClienteRepository.GetAll()
                 : ClienteRepository.Search(filtro);
+
+            DataView vista = dt.DefaultView;
+            vista.Sort = "CodigoCliente ASC";
+            DataTable dtOrdenado = vista.ToTable();
+
+            if (!dtOrdenado.Columns.Contains("Nro"))
+                dtOrdenado.Columns.Add("Nro", typeof(int));
+
+            for (int i = 0; i < dtOrdenado.Rows.Count; i++)
+            {
+                dtOrdenado.Rows[i]["Nro"] = i + 1;
+            }
+
+            dgvClientes.DataSource = dtOrdenado;
+
+            if (dgvClientes.Columns["Nro"] != null)
+            {
+                dgvClientes.Columns["Nro"].HeaderText = "N°";
+                dgvClientes.Columns["Nro"].Width = 50;
+                dgvClientes.Columns["Nro"].DisplayIndex = 0;
+            }
+
+            if (dgvClientes.Columns["CodigoCliente"] != null)
+            {
+                dgvClientes.Columns["CodigoCliente"].Visible = false;
+            }
         }
 
         // ───────────────────── LIMPIAR ─────────────────────
         private void Limpiar()
         {
+            codigoClienteSeleccionado = 0;
             txtCodigoCliente.Clear();
             txtNombres.Clear();
             txtApellidos.Clear();
@@ -89,7 +120,7 @@ namespace SistemaInventario
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCodigoCliente.Text))
+            if (codigoClienteSeleccionado <= 0)
             {
                 MessageBox.Show("Seleccione un cliente para modificar.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -101,7 +132,7 @@ namespace SistemaInventario
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCodigoCliente.Text))
+            if (codigoClienteSeleccionado <= 0)
             {
                 MessageBox.Show("Seleccione un cliente para eliminar.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -114,8 +145,7 @@ namespace SistemaInventario
 
             try
             {
-                int codigo = int.Parse(txtCodigoCliente.Text);
-                if (ClienteRepository.Delete(codigo))
+                if (ClienteRepository.Delete(codigoClienteSeleccionado))
                 {
                     MessageBox.Show("Cliente eliminado.", "Información",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -185,8 +215,7 @@ namespace SistemaInventario
                 }
                 else if (modoActual == Modo.Editar)
                 {
-                    int codigo = int.Parse(txtCodigoCliente.Text);
-                    ClienteRepository.Update(codigo, nombres, apellidos, dui, sexo, direccion, telefono);
+                    ClienteRepository.Update(codigoClienteSeleccionado, nombres, apellidos, dui, sexo, direccion, telefono);
                     MessageBox.Show("Cliente actualizado correctamente.", "Información",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -220,7 +249,10 @@ namespace SistemaInventario
                 return;
 
             DataGridViewRow row = dgvClientes.Rows[e.RowIndex];
-            txtCodigoCliente.Text = row.Cells["CodigoCliente"].Value?.ToString() ?? string.Empty;
+
+            codigoClienteSeleccionado = Convert.ToInt32(row.Cells["CodigoCliente"].Value);
+            txtCodigoCliente.Text = row.Cells["Nro"].Value?.ToString() ?? string.Empty;
+
             txtNombres.Text = row.Cells["Nombres"].Value?.ToString() ?? string.Empty;
             txtApellidos.Text = row.Cells["Apellidos"].Value?.ToString() ?? string.Empty;
             txtDni.Text = row.Cells["Dui"].Value?.ToString() ?? string.Empty;

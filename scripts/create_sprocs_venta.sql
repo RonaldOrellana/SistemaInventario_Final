@@ -31,14 +31,47 @@ CREATE PROCEDURE dbo.usp_VentaDetalle_Insert
 AS
 BEGIN
     SET NOCOUNT ON;
+    SET XACT_ABORT ON;
 
-    INSERT INTO dbo.VentaDetalles(VentaId, ProductoCodigo, Cantidad, Precio, Subtotal)
-    VALUES(@VentaId, @ProductoCodigo, @Cantidad, @Precio, @Subtotal);
+    BEGIN TRY
+        BEGIN TRAN;
 
-    -- Reducir stock del producto vendido
-    UPDATE dbo.Productos
-       SET Stock = Stock - @Cantidad
-     WHERE Codigo = @ProductoCodigo;
+        DECLARE @StockActual INT;
+
+        SELECT @StockActual = Stock
+          FROM dbo.Productos WITH (UPDLOCK, ROWLOCK)
+         WHERE Codigo = @ProductoCodigo;
+
+        IF @StockActual IS NULL
+        BEGIN
+            RAISERROR('El producto no existe.', 16, 1);
+            ROLLBACK TRAN;
+            RETURN;
+        END
+
+        IF @StockActual < @Cantidad
+        BEGIN
+            RAISERROR('No hay stock suficiente para completar la venta.', 16, 1);
+            ROLLBACK TRAN;
+            RETURN;
+        END
+
+        INSERT INTO dbo.VentaDetalles(VentaId, ProductoCodigo, Cantidad, Precio, Subtotal)
+        VALUES(@VentaId, @ProductoCodigo, @Cantidad, @Precio, @Subtotal);
+
+        UPDATE dbo.Productos
+           SET Stock = Stock - @Cantidad
+         WHERE Codigo = @ProductoCodigo;
+
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRAN;
+
+        DECLARE @Mensaje NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR(@Mensaje, 16, 1);
+    END CATCH
 END
 GO
 

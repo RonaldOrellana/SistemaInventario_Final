@@ -249,9 +249,13 @@ namespace SistemaInventario
                 using (var cn = Conexion.GetConnection())
                 {
                     string sql =
-                        $"SELECT {ColCodigo} AS Codigo, {ColDescripcion} AS Descripcion " +
+                        $"SELECT " +
+                        $"ROW_NUMBER() OVER (ORDER BY {ColCodigo}) AS Nro, " +
+                        $"{ColCodigo} AS Codigo, " +
+                        $"{ColDescripcion} AS Descripcion " +
                         $"FROM {Tabla} " +
-                        $"WHERE {ColDescripcion} LIKE @f OR CAST({ColCodigo} AS VARCHAR(50)) LIKE @f";
+                        $"WHERE {ColDescripcion} LIKE @f OR CAST({ColCodigo} AS VARCHAR(50)) LIKE @f " +
+                        $"ORDER BY {ColCodigo}";
 
                     using (var cmd = new SqlCommand(sql, cn))
                     {
@@ -265,6 +269,17 @@ namespace SistemaInventario
                 }
 
                 dgvcategorias.DataSource = dt;
+
+                if (dgvcategorias.Columns["Nro"] != null)
+                {
+                    dgvcategorias.Columns["Nro"].HeaderText = "N°";
+                    dgvcategorias.Columns["Nro"].Width = 50;
+                }
+
+                if (dgvcategorias.Columns["Codigo"] != null)
+                {
+                    dgvcategorias.Columns["Codigo"].Visible = false;
+                }
 
                 bool tieneFilas = dt.Rows.Count > 0;
                 btnmodificar.Enabled = tieneFilas;

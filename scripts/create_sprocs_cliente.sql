@@ -10,7 +10,7 @@ BEGIN
     SET NOCOUNT ON;
     SELECT CodigoCliente, Nombres, Apellidos, Dui, Sexo, Direccion, Telefono
       FROM dbo.Clientes
-     ORDER BY Apellidos, Nombres;
+     ORDER BY CodigoCliente;
 END
 GO
 
@@ -27,6 +27,6 @@ BEGIN
         OR Apellidos LIKE '%' + @f + '%'
         OR Dui       LIKE '%' + @f + '%'
         OR CONVERT(NVARCHAR, CodigoCliente) = @f
-     ORDER BY Apellidos, Nombres;
+     ORDER BY CodigoCliente;
 END
 GO
