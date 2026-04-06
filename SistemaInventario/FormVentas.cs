@@ -47,11 +47,6 @@ namespace SistemaInventario
             dtCombo.Columns.Add("CodigoCliente", typeof(int));
             dtCombo.Columns.Add("NombreCompleto", typeof(string));
 
-            var emptyRow = dtCombo.NewRow();
-            emptyRow["CodigoCliente"] = DBNull.Value;
-            emptyRow["NombreCompleto"] = "(Sin cliente)";
-            dtCombo.Rows.Add(emptyRow);
-
             foreach (DataRow r in dt.Rows)
             {
                 var newRow = dtCombo.NewRow();
@@ -63,6 +58,8 @@ namespace SistemaInventario
             cbCliente.DataSource = dtCombo;
             cbCliente.DisplayMember = "NombreCompleto";
             cbCliente.ValueMember = "CodigoCliente";
+
+            cbCliente.SelectedIndex = -1;
         }
 
         private void CargarProductos()
@@ -234,21 +231,26 @@ namespace SistemaInventario
 
         private void BtnGuardarVenta_Click(object sender, EventArgs e)
         {
+            if (cbCliente.SelectedIndex < 0 ||
+                cbCliente.SelectedValue == null ||
+                cbCliente.SelectedValue == DBNull.Value)
+            {
+                MessageBox.Show("Debe seleccionar un cliente para poder guardar la venta.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (dtDetalle.Rows.Count == 0)
             {
-                MessageBox.Show("Agregue al menos un producto al detalle.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Agregue al menos un producto al detalle.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!ValidarStockAntesDeGuardar())
                 return;
 
-            int? clienteId = null;
-            if (cbCliente.SelectedValue != null && cbCliente.SelectedValue != DBNull.Value)
-            {
-                clienteId = Convert.ToInt32(cbCliente.SelectedValue);
-            }
-
+            int clienteId = Convert.ToInt32(cbCliente.SelectedValue);
             decimal total = CalcularTotal();
 
             try
@@ -266,13 +268,15 @@ namespace SistemaInventario
                     );
                 }
 
-                MessageBox.Show("Venta guardada correctamente.\nN° Venta: " + ventaId, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Venta guardada correctamente.\nN° Venta: " + ventaId,
+                    "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LimpiarVenta();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar la venta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al guardar la venta: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -283,7 +287,7 @@ namespace SistemaInventario
 
         private void LimpiarVenta()
         {
-            cbCliente.SelectedIndex = 0;
+            cbCliente.SelectedIndex = -1;
 
             if (cbProducto.Items.Count > 0)
                 cbProducto.SelectedIndex = 0;

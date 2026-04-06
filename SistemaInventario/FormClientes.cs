@@ -10,8 +10,7 @@ namespace SistemaInventario
         private enum Modo { Ninguno, Nuevo, Editar }
         private Modo modoActual = Modo.Ninguno;
 
-        // Guarda el ID real de la BD, aunque en pantalla se muestre el N° consecutivo
-        private int codigoClienteSeleccionado = 0;
+        private bool formateandoEntrada = false;
 
         public FormClientes()
         {
@@ -24,6 +23,9 @@ namespace SistemaInventario
             btnCancelar.Click += BtnCancelar_Click;
             txtBuscar.TextChanged += TxtBuscar_TextChanged;
             dgvClientes.CellClick += DgvClientes_CellClick;
+
+            txtDni.TextChanged += TxtDni_TextChanged;
+            txtTelefono.TextChanged += TxtTelefono_TextChanged;
         }
 
         private void FormClientes_Load(object sender, EventArgs e)
@@ -31,6 +33,9 @@ namespace SistemaInventario
             cbSexo.Items.Clear();
             cbSexo.Items.Add("Masculino");
             cbSexo.Items.Add("Femenino");
+
+            txtDni.MaxLength = 10;      // 12345678-9
+            txtTelefono.MaxLength = 9;  // 1234-5678
 
             CargarClientes();
             Limpiar();
@@ -99,7 +104,6 @@ namespace SistemaInventario
         // ───────────────────── LIMPIAR ─────────────────────
         private void Limpiar()
         {
-            codigoClienteSeleccionado = 0;
             txtCodigoCliente.Clear();
             txtNombres.Clear();
             txtApellidos.Clear();
@@ -120,7 +124,7 @@ namespace SistemaInventario
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (codigoClienteSeleccionado <= 0)
+            if (string.IsNullOrWhiteSpace(txtCodigoCliente.Text))
             {
                 MessageBox.Show("Seleccione un cliente para modificar.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -132,7 +136,7 @@ namespace SistemaInventario
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (codigoClienteSeleccionado <= 0)
+            if (string.IsNullOrWhiteSpace(txtCodigoCliente.Text))
             {
                 MessageBox.Show("Seleccione un cliente para eliminar.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -145,7 +149,8 @@ namespace SistemaInventario
 
             try
             {
-                if (ClienteRepository.Delete(codigoClienteSeleccionado))
+                int codigo = int.Parse(txtCodigoCliente.Text);
+                if (ClienteRepository.Delete(codigo))
                 {
                     MessageBox.Show("Cliente eliminado.", "Información",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -215,7 +220,8 @@ namespace SistemaInventario
                 }
                 else if (modoActual == Modo.Editar)
                 {
-                    ClienteRepository.Update(codigoClienteSeleccionado, nombres, apellidos, dui, sexo, direccion, telefono);
+                    int codigo = int.Parse(txtCodigoCliente.Text);
+                    ClienteRepository.Update(codigo, nombres, apellidos, dui, sexo, direccion, telefono);
                     MessageBox.Show("Cliente actualizado correctamente.", "Información",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -249,10 +255,7 @@ namespace SistemaInventario
                 return;
 
             DataGridViewRow row = dgvClientes.Rows[e.RowIndex];
-
-            codigoClienteSeleccionado = Convert.ToInt32(row.Cells["CodigoCliente"].Value);
-            txtCodigoCliente.Text = row.Cells["Nro"].Value?.ToString() ?? string.Empty;
-
+            txtCodigoCliente.Text = row.Cells["CodigoCliente"].Value?.ToString() ?? string.Empty;
             txtNombres.Text = row.Cells["Nombres"].Value?.ToString() ?? string.Empty;
             txtApellidos.Text = row.Cells["Apellidos"].Value?.ToString() ?? string.Empty;
             txtDni.Text = row.Cells["Dui"].Value?.ToString() ?? string.Empty;
@@ -264,6 +267,74 @@ namespace SistemaInventario
             cbSexo.SelectedIndex = idx >= 0 ? idx : -1;
 
             EstablecerModo(Modo.Ninguno);
+        }
+
+        private void TxtDni_TextChanged(object sender, EventArgs e)
+        {
+            if (formateandoEntrada)
+                return;
+
+            formateandoEntrada = true;
+
+            int seleccion = txtDni.SelectionStart;
+            string texto = txtDni.Text;
+            string soloDigitos = string.Empty;
+
+            foreach (char c in texto)
+            {
+                if (char.IsDigit(c))
+                    soloDigitos += c;
+            }
+
+            if (soloDigitos.Length > 9)
+                soloDigitos = soloDigitos.Substring(0, 9);
+
+            string formateado = soloDigitos;
+
+            if (soloDigitos.Length > 8)
+                formateado = soloDigitos.Substring(0, 8) + "-" + soloDigitos.Substring(8);
+
+            txtDni.Text = formateado;
+
+            if (seleccion > txtDni.Text.Length)
+                seleccion = txtDni.Text.Length;
+
+            txtDni.SelectionStart = seleccion;
+            formateandoEntrada = false;
+        }
+
+        private void TxtTelefono_TextChanged(object sender, EventArgs e)
+        {
+            if (formateandoEntrada)
+                return;
+
+            formateandoEntrada = true;
+
+            int seleccion = txtTelefono.SelectionStart;
+            string texto = txtTelefono.Text;
+            string soloDigitos = string.Empty;
+
+            foreach (char c in texto)
+            {
+                if (char.IsDigit(c))
+                    soloDigitos += c;
+            }
+
+            if (soloDigitos.Length > 8)
+                soloDigitos = soloDigitos.Substring(0, 8);
+
+            string formateado = soloDigitos;
+
+            if (soloDigitos.Length > 4)
+                formateado = soloDigitos.Substring(0, 4) + "-" + soloDigitos.Substring(4);
+
+            txtTelefono.Text = formateado;
+
+            if (seleccion > txtTelefono.Text.Length)
+                seleccion = txtTelefono.Text.Length;
+
+            txtTelefono.SelectionStart = seleccion;
+            formateandoEntrada = false;
         }
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
