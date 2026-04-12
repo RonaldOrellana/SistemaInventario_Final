@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Arreglos en la conexion
+
+using System;
 using System.Data;
 using System.Windows.Forms;
 using SistemaInventario.Data;
@@ -43,6 +45,7 @@ namespace SistemaInventario
         }
 
         // ───────────────────── MODO ─────────────────────
+
         private void EstablecerModo(Modo modo)
         {
             modoActual = modo;
@@ -66,6 +69,7 @@ namespace SistemaInventario
         }
 
         // ───────────────────── CARGAR DATOS ─────────────────────
+
         private void CargarClientes()
         {
             string filtro = txtBuscar.Text.Trim();
@@ -102,6 +106,7 @@ namespace SistemaInventario
         }
 
         // ───────────────────── LIMPIAR ─────────────────────
+
         private void Limpiar()
         {
             txtCodigoCliente.Clear();
@@ -115,6 +120,7 @@ namespace SistemaInventario
         }
 
         // ───────────────────── BOTONES ─────────────────────
+
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             Limpiar();
@@ -343,3 +349,4 @@ namespace SistemaInventario
         }
     }
 }
+
