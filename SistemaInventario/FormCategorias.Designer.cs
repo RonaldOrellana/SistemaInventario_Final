@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCategorias));
             this.btnnuevo = new System.Windows.Forms.Button();
             this.btnguardar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
@@ -54,6 +55,15 @@
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
             // 
+            // btnguardar
+            // 
+            this.btnguardar.Location = new System.Drawing.Point(98, 170);
+            this.btnguardar.Name = "btnguardar";
+            this.btnguardar.Size = new System.Drawing.Size(85, 36);
+            this.btnguardar.TabIndex = 7;
+            this.btnguardar.Text = "Guardar";
+            this.btnguardar.UseVisualStyleBackColor = true;
+            // 
             // btnmodificar
             // 
             this.btnmodificar.Location = new System.Drawing.Point(149, 20);
@@ -72,12 +82,21 @@
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.UseVisualStyleBackColor = true;
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Location = new System.Drawing.Point(238, 170);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(85, 36);
+            this.btncancelar.TabIndex = 8;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Código";
             // 
@@ -89,6 +108,15 @@
             this.label2.Size = new System.Drawing.Size(79, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Descripción";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 16);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Buscar :";
             // 
             // textBox1
             // 
@@ -105,39 +133,24 @@
             this.textBox2.Size = new System.Drawing.Size(174, 22);
             this.textBox2.TabIndex = 6;
             // 
-            // btnguardar
-            // 
-            this.btnguardar.Location = new System.Drawing.Point(98, 170);
-            this.btnguardar.Name = "btnguardar";
-            this.btnguardar.Size = new System.Drawing.Size(85, 36);
-            this.btnguardar.TabIndex = 7;
-            this.btnguardar.Text = "Guardar";
-            this.btnguardar.UseVisualStyleBackColor = true;
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Location = new System.Drawing.Point(238, 170);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(85, 36);
-            this.btncancelar.TabIndex = 8;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Buscar :";
-            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(110, 35);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(200, 22);
             this.textBox3.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvcategorias);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(370, 20);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(480, 410);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Lista de Categorías";
             // 
             // dgvcategorias
             // 
@@ -153,22 +166,11 @@
             this.dgvcategorias.Size = new System.Drawing.Size(465, 330);
             this.dgvcategorias.TabIndex = 2;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvcategorias);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(370, 20);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(480, 410);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Lista de Categorías";
-            // 
             // FormCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(870, 450);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btnmodificar);
@@ -180,14 +182,16 @@
             this.Controls.Add(this.btnguardar);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCategorias";
-            this.Text = "Categorías";
+            this.Text = "Sistema de inventario | Categorias";
             this.Load += new System.EventHandler(this.FormCategorias_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

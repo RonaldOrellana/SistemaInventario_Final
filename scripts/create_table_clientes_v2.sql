@@ -19,7 +19,7 @@ CREATE TABLE dbo.Clientes
     CodigoCliente INT IDENTITY(1,1) PRIMARY KEY,
     Nombres       NVARCHAR(100) NOT NULL,
     Apellidos     NVARCHAR(100) NOT NULL,
-    Dni           NVARCHAR(20)  NOT NULL,
+    Dui           NVARCHAR(20)  NOT NULL,
     Sexo          NVARCHAR(20)  NOT NULL,
     Direccion     NVARCHAR(200) NULL,
     Telefono      NVARCHAR(30)  NULL

@@ -33,34 +33,34 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.picVentas = new System.Windows.Forms.PictureBox();
-            this.picClientes = new System.Windows.Forms.PictureBox();
-            this.picProducto = new System.Windows.Forms.PictureBox();
-            this.picCategoria = new System.Windows.Forms.PictureBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblcantpro = new System.Windows.Forms.Label();
-            this.Panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblcantv = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbltotal = new System.Windows.Forms.Label();
-            this.Panel15 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.Panel12 = new System.Windows.Forms.Panel();
-            this.btncreacuent = new System.Windows.Forms.Panel();
-            this.btnlistacuenta = new System.Windows.Forms.Panel();
             this.Label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnlistacuenta = new System.Windows.Forms.Panel();
+            this.btncreacuent = new System.Windows.Forms.Panel();
+            this.Panel12 = new System.Windows.Forms.Panel();
+            this.Panel15 = new System.Windows.Forms.Panel();
+            this.Panel6 = new System.Windows.Forms.Panel();
+            this.picVentas = new System.Windows.Forms.PictureBox();
+            this.picClientes = new System.Windows.Forms.PictureBox();
+            this.picProducto = new System.Windows.Forms.PictureBox();
+            this.picCategoria = new System.Windows.Forms.PictureBox();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCategoria)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -104,50 +104,6 @@
             this.label4.Text = "Ventas";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // picVentas
-            // 
-            this.picVentas.Image = global::SistemaInventario.Properties.Resources.Imagen_para_ventas;
-            this.picVentas.Location = new System.Drawing.Point(630, 3);
-            this.picVentas.Name = "picVentas";
-            this.picVentas.Size = new System.Drawing.Size(136, 126);
-            this.picVentas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picVentas.TabIndex = 3;
-            this.picVentas.TabStop = false;
-            this.picVentas.Click += new System.EventHandler(this.picVentas_Click);
-            // 
-            // picClientes
-            // 
-            this.picClientes.Image = global::SistemaInventario.Properties.Resources.Imagen_para_clientes;
-            this.picClientes.Location = new System.Drawing.Point(435, 3);
-            this.picClientes.Name = "picClientes";
-            this.picClientes.Size = new System.Drawing.Size(144, 126);
-            this.picClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClientes.TabIndex = 2;
-            this.picClientes.TabStop = false;
-            this.picClientes.Click += new System.EventHandler(this.picClientes_Click);
-            // 
-            // picProducto
-            // 
-            this.picProducto.Image = global::SistemaInventario.Properties.Resources.Imagen_para_producto;
-            this.picProducto.Location = new System.Drawing.Point(217, 3);
-            this.picProducto.Name = "picProducto";
-            this.picProducto.Size = new System.Drawing.Size(140, 126);
-            this.picProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picProducto.TabIndex = 1;
-            this.picProducto.TabStop = false;
-            this.picProducto.Click += new System.EventHandler(this.picProducto_Click);
-            // 
-            // picCategoria
-            // 
-            this.picCategoria.Image = global::SistemaInventario.Properties.Resources.Imagen_para_categorí1;
-            this.picCategoria.Location = new System.Drawing.Point(3, 3);
-            this.picCategoria.Name = "picCategoria";
-            this.picCategoria.Size = new System.Drawing.Size(137, 126);
-            this.picCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picCategoria.TabIndex = 0;
-            this.picCategoria.TabStop = false;
-            this.picCategoria.Click += new System.EventHandler(this.picCategoria_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblcantpro);
@@ -166,16 +122,6 @@
             this.lblcantpro.Size = new System.Drawing.Size(48, 16);
             this.lblcantpro.TabIndex = 8;
             this.lblcantpro.Text = "Label9";
-            // 
-            // Panel6
-            // 
-            this.Panel6.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel6.BackgroundImage")));
-            this.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel6.Location = new System.Drawing.Point(3, 3);
-            this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(133, 116);
-            this.Panel6.TabIndex = 2;
             // 
             // label5
             // 
@@ -234,16 +180,6 @@
             this.lbltotal.TabIndex = 10;
             this.lbltotal.Text = "Label10";
             // 
-            // Panel15
-            // 
-            this.Panel15.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Panel15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel15.BackgroundImage")));
-            this.Panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel15.Location = new System.Drawing.Point(-1, 0);
-            this.Panel15.Name = "Panel15";
-            this.Panel15.Size = new System.Drawing.Size(138, 119);
-            this.Panel15.TabIndex = 2;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -253,41 +189,6 @@
             this.label7.Size = new System.Drawing.Size(116, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "INGRESOS";
-            // 
-            // Panel12
-            // 
-            this.Panel12.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Panel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel12.BackgroundImage")));
-            this.Panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel12.Location = new System.Drawing.Point(471, 240);
-            this.Panel12.Name = "Panel12";
-            this.Panel12.Size = new System.Drawing.Size(159, 122);
-            this.Panel12.TabIndex = 2;
-            // 
-            // btncreacuent
-            // 
-            this.btncreacuent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btncreacuent.BackgroundImage")));
-            this.btncreacuent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncreacuent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btncreacuent.Location = new System.Drawing.Point(585, 144);
-            this.btncreacuent.Name = "btncreacuent";
-            this.btncreacuent.Size = new System.Drawing.Size(67, 49);
-            this.btncreacuent.TabIndex = 13;
-            this.btncreacuent.Click += new System.EventHandler(this.btncreacuent_Click);
-            this.btncreacuent.Paint += new System.Windows.Forms.PaintEventHandler(this.btncreacuent_Paint);
-            // 
-            // btnlistacuenta
-            // 
-            this.btnlistacuenta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlistacuenta.BackgroundImage")));
-            this.btnlistacuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnlistacuenta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnlistacuenta.Enabled = true;
-            this.btnlistacuenta.Location = new System.Drawing.Point(698, 144);
-            this.btnlistacuenta.Name = "btnlistacuenta";
-            this.btnlistacuenta.Size = new System.Drawing.Size(67, 49);
-            this.btnlistacuenta.TabIndex = 14;
-            this.btnlistacuenta.Visible = false;
-            this.btnlistacuenta.Click += new System.EventHandler(this.btnlistacuenta_Click);
             // 
             // Label14
             // 
@@ -312,6 +213,104 @@
             this.label8.Text = "Listado de Ventas";
             this.label8.Visible = false;
             // 
+            // btnlistacuenta
+            // 
+            this.btnlistacuenta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlistacuenta.BackgroundImage")));
+            this.btnlistacuenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnlistacuenta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnlistacuenta.Location = new System.Drawing.Point(698, 144);
+            this.btnlistacuenta.Name = "btnlistacuenta";
+            this.btnlistacuenta.Size = new System.Drawing.Size(67, 49);
+            this.btnlistacuenta.TabIndex = 14;
+            this.btnlistacuenta.Visible = false;
+            this.btnlistacuenta.Click += new System.EventHandler(this.btnlistacuenta_Click);
+            // 
+            // btncreacuent
+            // 
+            this.btncreacuent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btncreacuent.BackgroundImage")));
+            this.btncreacuent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncreacuent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btncreacuent.Location = new System.Drawing.Point(585, 144);
+            this.btncreacuent.Name = "btncreacuent";
+            this.btncreacuent.Size = new System.Drawing.Size(67, 49);
+            this.btncreacuent.TabIndex = 13;
+            this.btncreacuent.Click += new System.EventHandler(this.btncreacuent_Click);
+            this.btncreacuent.Paint += new System.Windows.Forms.PaintEventHandler(this.btncreacuent_Paint);
+            // 
+            // Panel12
+            // 
+            this.Panel12.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel12.BackgroundImage")));
+            this.Panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Panel12.Location = new System.Drawing.Point(471, 240);
+            this.Panel12.Name = "Panel12";
+            this.Panel12.Size = new System.Drawing.Size(159, 122);
+            this.Panel12.TabIndex = 2;
+            // 
+            // Panel15
+            // 
+            this.Panel15.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel15.BackgroundImage")));
+            this.Panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Panel15.Location = new System.Drawing.Point(-1, 0);
+            this.Panel15.Name = "Panel15";
+            this.Panel15.Size = new System.Drawing.Size(138, 119);
+            this.Panel15.TabIndex = 2;
+            // 
+            // Panel6
+            // 
+            this.Panel6.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel6.BackgroundImage")));
+            this.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Panel6.Location = new System.Drawing.Point(3, 3);
+            this.Panel6.Name = "Panel6";
+            this.Panel6.Size = new System.Drawing.Size(133, 116);
+            this.Panel6.TabIndex = 2;
+            // 
+            // picVentas
+            // 
+            this.picVentas.Image = global::SistemaInventario.Properties.Resources.Imagen_para_ventas;
+            this.picVentas.Location = new System.Drawing.Point(630, 3);
+            this.picVentas.Name = "picVentas";
+            this.picVentas.Size = new System.Drawing.Size(136, 126);
+            this.picVentas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picVentas.TabIndex = 3;
+            this.picVentas.TabStop = false;
+            this.picVentas.Click += new System.EventHandler(this.picVentas_Click);
+            // 
+            // picClientes
+            // 
+            this.picClientes.Image = global::SistemaInventario.Properties.Resources.Imagen_para_clientes;
+            this.picClientes.Location = new System.Drawing.Point(435, 3);
+            this.picClientes.Name = "picClientes";
+            this.picClientes.Size = new System.Drawing.Size(144, 126);
+            this.picClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClientes.TabIndex = 2;
+            this.picClientes.TabStop = false;
+            this.picClientes.Click += new System.EventHandler(this.picClientes_Click);
+            // 
+            // picProducto
+            // 
+            this.picProducto.Image = global::SistemaInventario.Properties.Resources.Imagen_para_producto;
+            this.picProducto.Location = new System.Drawing.Point(217, 3);
+            this.picProducto.Name = "picProducto";
+            this.picProducto.Size = new System.Drawing.Size(140, 126);
+            this.picProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picProducto.TabIndex = 1;
+            this.picProducto.TabStop = false;
+            this.picProducto.Click += new System.EventHandler(this.picProducto_Click);
+            // 
+            // picCategoria
+            // 
+            this.picCategoria.Image = global::SistemaInventario.Properties.Resources.Imagen_para_categorí1;
+            this.picCategoria.Location = new System.Drawing.Point(3, 3);
+            this.picCategoria.Name = "picCategoria";
+            this.picCategoria.Size = new System.Drawing.Size(137, 126);
+            this.picCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picCategoria.TabIndex = 0;
+            this.picCategoria.TabStop = false;
+            this.picCategoria.Click += new System.EventHandler(this.picCategoria_Click);
+            // 
             // Formmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -334,18 +333,20 @@
             this.Controls.Add(this.picClientes);
             this.Controls.Add(this.picProducto);
             this.Controls.Add(this.picCategoria);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Formmenu";
-            this.Text = "Formenu";
-            ((System.ComponentModel.ISupportInitialize)(this.picVentas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCategoria)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sistema de inventario | Menu";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProducto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

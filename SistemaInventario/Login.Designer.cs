@@ -42,86 +42,57 @@
             // 
             // labelusuario
             // 
-            this.labelusuario.AutoSize = true;
-            this.labelusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelusuario.Location = new System.Drawing.Point(242, 45);
+            resources.ApplyResources(this.labelusuario, "labelusuario");
             this.labelusuario.Name = "labelusuario";
-            this.labelusuario.Size = new System.Drawing.Size(67, 20);
-            this.labelusuario.TabIndex = 0;
-            this.labelusuario.Text = "Usuario";
             // 
             // labelContra
             // 
-            this.labelContra.AutoSize = true;
-            this.labelContra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContra.Location = new System.Drawing.Point(241, 112);
+            resources.ApplyResources(this.labelContra, "labelContra");
             this.labelContra.Name = "labelContra";
-            this.labelContra.Size = new System.Drawing.Size(95, 20);
-            this.labelContra.TabIndex = 1;
-            this.labelContra.Text = "Contraseña";
             // 
             // txtusuario
             // 
-            this.txtusuario.Location = new System.Drawing.Point(348, 44);
+            resources.ApplyResources(this.txtusuario, "txtusuario");
             this.txtusuario.Name = "txtusuario";
-            this.txtusuario.Size = new System.Drawing.Size(212, 22);
-            this.txtusuario.TabIndex = 2;
             // 
             // txtcontra
             // 
-            this.txtcontra.Location = new System.Drawing.Point(348, 112);
+            resources.ApplyResources(this.txtcontra, "txtcontra");
             this.txtcontra.Name = "txtcontra";
-            this.txtcontra.Size = new System.Drawing.Size(212, 22);
-            this.txtcontra.TabIndex = 3;
             // 
             // chkver
             // 
-            this.chkver.AutoSize = true;
-            this.chkver.Location = new System.Drawing.Point(348, 152);
+            resources.ApplyResources(this.chkver, "chkver");
             this.chkver.Name = "chkver";
-            this.chkver.Size = new System.Drawing.Size(120, 20);
-            this.chkver.TabIndex = 4;
-            this.chkver.Text = "Ver contraseña";
             this.chkver.UseVisualStyleBackColor = true;
             this.chkver.CheckedChanged += new System.EventHandler(this.chkVer_CheckedChanged);
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(262, 216);
+            resources.ApplyResources(this.btnEntrar, "btnEntrar");
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(90, 37);
-            this.btnEntrar.TabIndex = 5;
-            this.btnEntrar.Text = "Guardar";
             this.btnEntrar.UseVisualStyleBackColor = true;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(452, 216);
+            resources.ApplyResources(this.btnSalir, "btnSalir");
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(90, 37);
-            this.btnSalir.TabIndex = 6;
-            this.btnSalir.Text = "Cerrar";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // pictureBox1
             // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::SistemaInventario.Properties.Resources.Imagen_de_login_pers;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(5, 57);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(231, 209);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(608, 322);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEntrar);
@@ -131,7 +102,6 @@
             this.Controls.Add(this.labelContra);
             this.Controls.Add(this.labelusuario);
             this.Name = "Login";
-            this.Text = "Sistema | Inventario";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

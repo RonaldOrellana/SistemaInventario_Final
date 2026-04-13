@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
             this.btnnuevo = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
@@ -55,7 +56,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(43, 27);
+            this.btnnuevo.Location = new System.Drawing.Point(15, 38);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(85, 36);
             this.btnnuevo.TabIndex = 0;
@@ -64,7 +65,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(149, 27);
+            this.btnmodificar.Location = new System.Drawing.Point(134, 38);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(85, 36);
             this.btnmodificar.TabIndex = 1;
@@ -73,7 +74,7 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(252, 27);
+            this.btneliminar.Location = new System.Drawing.Point(252, 38);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(85, 36);
             this.btneliminar.TabIndex = 2;
@@ -199,9 +200,9 @@
             this.groupBox1.Controls.Add(this.dgvproducto);
             this.groupBox1.Controls.Add(this.txtbuscar);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(355, 27);
+            this.groupBox1.Location = new System.Drawing.Point(365, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 382);
+            this.groupBox1.Size = new System.Drawing.Size(423, 382);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Listado de los Productos";
@@ -214,7 +215,7 @@
             this.dgvproducto.Name = "dgvproducto";
             this.dgvproducto.RowHeadersWidth = 51;
             this.dgvproducto.RowTemplate.Height = 24;
-            this.dgvproducto.Size = new System.Drawing.Size(355, 284);
+            this.dgvproducto.Size = new System.Drawing.Size(411, 284);
             this.dgvproducto.TabIndex = 2;
             // 
             // txtbuscar
@@ -256,8 +257,10 @@
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnnuevo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormProductos";
-            this.Text = "FromProductos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Sistema de inventario | Productos ";
             this.Load += new System.EventHandler(this.FormProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtstock)).EndInit();
             this.groupBox1.ResumeLayout(false);
