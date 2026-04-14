@@ -121,19 +121,37 @@
   <data name="Imagen para clientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Imagen para clientes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Imagen para categorí1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Imagen para categorí1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Imagen para producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Imagen para producto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Imagen de login pers" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Imagen de login pers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Imagen para categorí" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Imagen para categorí.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Imagen para ventas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Imagen para ventas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clientes-potenciales1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clientes-potenciales1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clientes-potenciales" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clientes-potenciales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="categorias (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\categorias (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Imagen para producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imagen para producto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="consumismo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\consumismo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Imagen para categorí1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imagen para categorí1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Imagen de login pers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Imagen de login pers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="consumismo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\consumismo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ganador" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ganador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

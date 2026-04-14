@@ -190,6 +190,24 @@
   <ItemGroup>
     <None Include="Resources\Imagen para ventas.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\categorias %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consumismo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes-potenciales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consumismo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes-potenciales1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ganador.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
