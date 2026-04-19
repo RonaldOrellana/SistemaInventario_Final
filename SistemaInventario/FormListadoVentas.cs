@@ -84,7 +84,7 @@ namespace SistemaInventario
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.Location = new System.Drawing.Point(76, 48);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(769, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(769, 20);
             this.txtBuscar.TabIndex = 2;
             // 
             // btnActualizar
@@ -103,9 +103,11 @@ namespace SistemaInventario
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxVentas.Controls.Add(this.dgvVentas);
             this.groupBoxVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBoxVentas.Location = new System.Drawing.Point(14, 90);
+            this.groupBoxVentas.Location = new System.Drawing.Point(10, 73);
+            this.groupBoxVentas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxVentas.Name = "groupBoxVentas";
-            this.groupBoxVentas.Size = new System.Drawing.Size(846, 250);
+            this.groupBoxVentas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxVentas.Size = new System.Drawing.Size(634, 203);
             this.groupBoxVentas.TabIndex = 1;
             this.groupBoxVentas.TabStop = false;
             this.groupBoxVentas.Text = "Ventas";
@@ -120,14 +122,15 @@ namespace SistemaInventario
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvVentas.Location = new System.Drawing.Point(3, 22);
+            this.dgvVentas.Location = new System.Drawing.Point(2, 18);
+            this.dgvVentas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.RowHeadersWidth = 51;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(840, 225);
+            this.dgvVentas.Size = new System.Drawing.Size(630, 183);
             this.dgvVentas.TabIndex = 0;
             // 
             // groupBoxDetalle
@@ -138,9 +141,11 @@ namespace SistemaInventario
             this.groupBoxDetalle.Controls.Add(this.dgvDetalle);
             this.groupBoxDetalle.Controls.Add(this.lblTotalVenta);
             this.groupBoxDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBoxDetalle.Location = new System.Drawing.Point(14, 352);
+            this.groupBoxDetalle.Location = new System.Drawing.Point(10, 286);
+            this.groupBoxDetalle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxDetalle.Name = "groupBoxDetalle";
-            this.groupBoxDetalle.Size = new System.Drawing.Size(843, 287);
+            this.groupBoxDetalle.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDetalle.Size = new System.Drawing.Size(632, 233);
             this.groupBoxDetalle.TabIndex = 2;
             this.groupBoxDetalle.TabStop = false;
             this.groupBoxDetalle.Text = "Detalle de la venta";
@@ -155,14 +160,15 @@ namespace SistemaInventario
             this.dgvDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvDetalle.Location = new System.Drawing.Point(3, 22);
+            this.dgvDetalle.Location = new System.Drawing.Point(2, 18);
+            this.dgvDetalle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDetalle.MultiSelect = false;
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.ReadOnly = true;
             this.dgvDetalle.RowHeadersVisible = false;
             this.dgvDetalle.RowHeadersWidth = 51;
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalle.Size = new System.Drawing.Size(837, 225);
+            this.dgvDetalle.Size = new System.Drawing.Size(628, 183);
             this.dgvDetalle.TabIndex = 0;
             this.dgvDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalle_CellContentClick);
             // 
@@ -170,21 +176,23 @@ namespace SistemaInventario
             // 
             this.lblTotalVenta.AutoSize = true;
             this.lblTotalVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTotalVenta.Location = new System.Drawing.Point(16, 250);
+            this.lblTotalVenta.Location = new System.Drawing.Point(12, 203);
+            this.lblTotalVenta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalVenta.Name = "lblTotalVenta";
-            this.lblTotalVenta.Size = new System.Drawing.Size(111, 20);
+            this.lblTotalVenta.Size = new System.Drawing.Size(97, 17);
             this.lblTotalVenta.TabIndex = 1;
             this.lblTotalVenta.Text = "Total Venta:";
             // 
             // FormListadoVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(872, 653);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(654, 531);
             this.Controls.Add(this.groupBoxDetalle);
             this.Controls.Add(this.groupBoxVentas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormListadoVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de inventario | Listado_Ventas";

@@ -70,21 +70,23 @@
             // btnEntrar
             // 
             resources.ApplyResources(this.btnEntrar, "btnEntrar");
+            this.btnEntrar.BackColor = System.Drawing.Color.Green;
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.UseVisualStyleBackColor = true;
+            this.btnEntrar.UseVisualStyleBackColor = false;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // btnSalir
             // 
             resources.ApplyResources(this.btnSalir, "btnSalir");
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // pictureBox1
             // 
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Image = global::SistemaInventario.Properties.Resources.Imagen_de_login_pers;
+            this.pictureBox1.Image = global::SistemaInventario.Properties.Resources.acceso__1_;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
