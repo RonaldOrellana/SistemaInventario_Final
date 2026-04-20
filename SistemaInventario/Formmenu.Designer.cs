@@ -36,20 +36,20 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblcantpro = new System.Windows.Forms.Label();
+            this.Panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblcantv = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbltotal = new System.Windows.Forms.Label();
+            this.Panel15 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.Label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnlistacuenta = new System.Windows.Forms.Panel();
             this.btncreacuent = new System.Windows.Forms.Panel();
             this.Panel12 = new System.Windows.Forms.Panel();
-            this.Panel15 = new System.Windows.Forms.Panel();
-            this.Panel6 = new System.Windows.Forms.Panel();
             this.picVentas = new System.Windows.Forms.PictureBox();
             this.picClientes = new System.Windows.Forms.PictureBox();
             this.picProducto = new System.Windows.Forms.PictureBox();
@@ -110,11 +110,11 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel2.BackColor = System.Drawing.Color.SkyBlue;
             this.panel2.Controls.Add(this.lblcantpro);
             this.panel2.Controls.Add(this.Panel6);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(2, 195);
+            this.panel2.Location = new System.Drawing.Point(24, 197);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(244, 99);
@@ -130,23 +130,34 @@
             this.lblcantpro.TabIndex = 8;
             this.lblcantpro.Text = "Label9";
             // 
+            // Panel6
+            // 
+            this.Panel6.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel6.BackgroundImage")));
+            this.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Panel6.Location = new System.Drawing.Point(2, 2);
+            this.Panel6.Margin = new System.Windows.Forms.Padding(2);
+            this.Panel6.Name = "Panel6";
+            this.Panel6.Size = new System.Drawing.Size(100, 94);
+            this.Panel6.TabIndex = 2;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(106, 10);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 20);
+            this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "PRODUCTOS";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel1.BackColor = System.Drawing.Color.SkyBlue;
             this.panel1.Controls.Add(this.lblcantv);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(354, 195);
+            this.panel1.Location = new System.Drawing.Point(385, 197);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(220, 99);
@@ -165,24 +176,24 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(128, 10);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 20);
+            this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 0;
             this.label6.Text = "VENTAS";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel3.BackColor = System.Drawing.Color.SkyBlue;
             this.panel3.Controls.Add(this.lbltotal);
             this.panel3.Controls.Add(this.Panel15);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Location = new System.Drawing.Point(181, 299);
+            this.panel3.Location = new System.Drawing.Point(199, 307);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(220, 99);
+            this.panel3.Size = new System.Drawing.Size(220, 90);
             this.panel3.TabIndex = 11;
             // 
             // lbltotal
@@ -195,14 +206,25 @@
             this.lbltotal.TabIndex = 10;
             this.lbltotal.Text = "Label10";
             // 
+            // Panel15
+            // 
+            this.Panel15.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel15.BackgroundImage")));
+            this.Panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Panel15.Location = new System.Drawing.Point(-1, 0);
+            this.Panel15.Margin = new System.Windows.Forms.Padding(2);
+            this.Panel15.Name = "Panel15";
+            this.Panel15.Size = new System.Drawing.Size(104, 97);
+            this.Panel15.TabIndex = 2;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(116, 11);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 20);
+            this.label7.Size = new System.Drawing.Size(103, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "INGRESOS";
             // 
@@ -262,33 +284,11 @@
             this.Panel12.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Panel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel12.BackgroundImage")));
             this.Panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel12.Location = new System.Drawing.Point(353, 195);
+            this.Panel12.Location = new System.Drawing.Point(384, 197);
             this.Panel12.Margin = new System.Windows.Forms.Padding(2);
             this.Panel12.Name = "Panel12";
             this.Panel12.Size = new System.Drawing.Size(119, 99);
             this.Panel12.TabIndex = 2;
-            // 
-            // Panel15
-            // 
-            this.Panel15.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Panel15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel15.BackgroundImage")));
-            this.Panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel15.Location = new System.Drawing.Point(-1, 0);
-            this.Panel15.Margin = new System.Windows.Forms.Padding(2);
-            this.Panel15.Name = "Panel15";
-            this.Panel15.Size = new System.Drawing.Size(104, 97);
-            this.Panel15.TabIndex = 2;
-            // 
-            // Panel6
-            // 
-            this.Panel6.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel6.BackgroundImage")));
-            this.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel6.Location = new System.Drawing.Point(2, 2);
-            this.Panel6.Margin = new System.Windows.Forms.Padding(2);
-            this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(100, 94);
-            this.Panel6.TabIndex = 2;
             // 
             // picVentas
             // 
