@@ -34,21 +34,18 @@ namespace SistemaInventario
                 {
                     cn.Open();
 
-                    // Total de productos
                     using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Productos", cn))
                     {
                         object result = cmd.ExecuteScalar();
                         lblcantpro.Text = (result != null && result != DBNull.Value ? Convert.ToInt32(result) : 0).ToString();
                     }
 
-                    // Total de ventas
                     using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Ventas", cn))
                     {
                         object result = cmd.ExecuteScalar();
                         lblcantv.Text = (result != null && result != DBNull.Value ? Convert.ToInt32(result) : 0).ToString();
                     }
 
-                    // Total de ingresos
                     using (SqlCommand cmd = new SqlCommand("SELECT ISNULL(SUM(Total),0) FROM Ventas", cn))
                     {
                         object result = cmd.ExecuteScalar();
