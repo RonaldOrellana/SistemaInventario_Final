@@ -106,12 +106,12 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel2.BackColor = System.Drawing.Color.SkyBlue;
             this.panel2.Controls.Add(this.lblcantpro);
             this.panel2.Controls.Add(this.Panel6);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(312, 11);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(24, 197);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(325, 122);
             this.panel2.TabIndex = 9;
@@ -130,29 +130,30 @@
             this.Panel6.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel6.BackgroundImage")));
             this.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel6.Location = new System.Drawing.Point(3, 2);
-            this.Panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Panel6.Location = new System.Drawing.Point(2, 2);
+            this.Panel6.Margin = new System.Windows.Forms.Padding(2);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(133, 116);
+            this.Panel6.Size = new System.Drawing.Size(100, 94);
             this.Panel6.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(141, 12);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(106, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 25);
+            this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "PRODUCTOS";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel1.BackColor = System.Drawing.Color.SkyBlue;
             this.panel1.Controls.Add(this.lblcantv);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(515, 216);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(385, 197);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(293, 122);
             this.panel1.TabIndex = 10;
@@ -169,23 +170,24 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(171, 12);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(128, 10);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 25);
+            this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 0;
             this.label6.Text = "VENTAS";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel3.BackColor = System.Drawing.Color.SkyBlue;
             this.panel3.Controls.Add(this.lbltotal);
             this.panel3.Controls.Add(this.Panel15);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Location = new System.Drawing.Point(315, 435);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(199, 307);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(322, 122);
+            this.panel3.Size = new System.Drawing.Size(220, 90);
             this.panel3.TabIndex = 11;
             // 
             // lbltotal
@@ -203,18 +205,19 @@
             this.Panel15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel15.BackgroundImage")));
             this.Panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Panel15.Location = new System.Drawing.Point(-1, 0);
-            this.Panel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Panel15.Margin = new System.Windows.Forms.Padding(2);
             this.Panel15.Name = "Panel15";
-            this.Panel15.Size = new System.Drawing.Size(139, 119);
+            this.Panel15.Size = new System.Drawing.Size(104, 97);
             this.Panel15.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(155, 14);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(116, 11);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 25);
+            this.label7.Size = new System.Drawing.Size(103, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "INGRESOS";
             // 
@@ -272,8 +275,8 @@
             this.Panel12.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Panel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Panel12.BackgroundImage")));
             this.Panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Panel12.Location = new System.Drawing.Point(514, 216);
-            this.Panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Panel12.Location = new System.Drawing.Point(384, 197);
+            this.Panel12.Margin = new System.Windows.Forms.Padding(2);
             this.Panel12.Name = "Panel12";
             this.Panel12.Size = new System.Drawing.Size(159, 122);
             this.Panel12.TabIndex = 2;
