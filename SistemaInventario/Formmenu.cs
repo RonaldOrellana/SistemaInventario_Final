@@ -130,5 +130,15 @@ namespace SistemaInventario
         {
 
         }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            LoadDashboard();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            LoadDashboard();
+        }
     }
 }

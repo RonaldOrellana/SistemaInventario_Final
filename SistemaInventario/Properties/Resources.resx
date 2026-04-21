@@ -148,6 +148,9 @@
   <data name="acceso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\acceso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="acceso (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\acceso (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Imagen para clientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Imagen para clientes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,7 +163,7 @@
   <data name="clientes-potenciales" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clientes-potenciales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="acceso (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\acceso (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="17773678" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\17773678.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
