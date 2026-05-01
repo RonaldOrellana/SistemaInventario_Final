@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace SistemaInventario
@@ -47,29 +48,22 @@ namespace SistemaInventario
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtusuario.Text) && !string.IsNullOrEmpty(txtcontra.Text))
+            if (!string.IsNullOrWhiteSpace(txtusuario.Text) && !string.IsNullOrWhiteSpace(txtcontra.Text))
             {
-                    DataTable dtusuario = validar_usuario(txtusuario.Text, txtcontra.Text);
+                DataTable dtusuario = validar_usuario(txtusuario.Text.Trim(), txtcontra.Text);
 
                 if (dtusuario.Rows.Count != 0)
                 {
-                    string nivel = dtusuario.Rows[0]["tipo_usuario"].ToString();
+                    string nivel = dtusuario.Rows[0]["Rol"].ToString();
 
-                    if (nivel.Equals("Administrador"))
-                    {
-                        MessageBox.Show("Bienvenido " + txtusuario.Text);
+                    MessageBox.Show("Bienvenido " + txtusuario.Text + "\nRol: " + nivel, "Acceso correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        this.Hide();
-                        txtusuario.Clear();
-                        txtcontra.Clear();
+                    this.Hide();
+                    txtusuario.Clear();
+                    txtcontra.Clear();
 
-                        Formmenu frm = new Formmenu();
-                        frm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al entrar");
-                    }
+                    Formmenu frm = new Formmenu(nivel);
+                    frm.Show();
                 }
                 else
                 {
@@ -92,33 +86,29 @@ namespace SistemaInventario
             txtcontra.UseSystemPasswordChar = !chkver.Checked;
         }
 
-        /// <summary>
-        /// Método local de validación de ejemplo.
-        /// Reemplázalo por la lógica real de acceso a datos (BD).
-        /// Devuelve un DataTable con la columna "tipo_usuario" cuando las credenciales son válidas.
-        /// </summary>
-        /// <param name="usuario"></param>
-        /// <param name="contra"></param>
-        /// <returns></returns>
         private DataTable validar_usuario(string usuario, string contra)
         {
             var dt = new DataTable();
-            dt.Columns.Add("tipo_usuario", typeof(string));
+            dt.Columns.Add("Rol", typeof(string));
 
-            // Credenciales de ejemplo actualizadas:
-            // admin / 123456  => Administrador
-            // user  / user    => Usuario (ejemplo)
-            if (usuario == "admin" && contra == "123456")
+            using (SqlConnection cn = Conexion.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT TOP 1 Usuario, Clave, Rol FROM Usuarios WHERE Usuario = @Usuario AND Clave = @Clave", cn))
             {
-                var row = dt.NewRow();
-                row["tipo_usuario"] = "Administrador";
-                dt.Rows.Add(row);
-            }
-            else if (usuario == "user" && contra == "user")
-            {
-                var row = dt.NewRow();
-                row["tipo_usuario"] = "Usuario";
-                dt.Rows.Add(row);
+                cmd.Parameters.AddWithValue("@Usuario", usuario);
+                cmd.Parameters.AddWithValue("@Clave", contra);
+
+                cn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var row = dt.NewRow();
+                        row["Rol"] = reader["Rol"] != DBNull.Value ? reader["Rol"].ToString() : string.Empty;
+                        dt.Rows.Add(row);
+                    }
+                }
             }
 
             return dt;

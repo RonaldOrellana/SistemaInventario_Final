@@ -8,14 +8,18 @@ namespace SistemaInventario
 {
     public partial class Formmenu : Form
     {
+        private readonly string rolUsuario;
+
         public Formmenu()
+            : this(string.Empty)
+        {
+        }
+
+        public Formmenu(string rolUsuario)
         {
             InitializeComponent();
 
-            btncreacuent.Visible = false;
-            Label14.Visible = false;
-            btnlistacuenta.Visible = false;
-            label8.Visible = false;
+            this.rolUsuario = rolUsuario ?? string.Empty;
 
             label8.Click += label8_Click;
             this.Load += Formmenu_Load;
@@ -23,7 +27,45 @@ namespace SistemaInventario
 
         private void Formmenu_Load(object sender, EventArgs e)
         {
+            AplicarPermisosPorRol();
             LoadDashboard();
+        }
+
+        private void AplicarPermisosPorRol()
+        {
+            bool esAdministrador = string.Equals(rolUsuario, "Administrador", StringComparison.OrdinalIgnoreCase);
+
+            picCategoria.Visible = esAdministrador;
+            picProducto.Visible = esAdministrador;
+            label1.Visible = esAdministrador;
+            label2.Visible = esAdministrador;
+            panel1.Visible = esAdministrador;
+            panel2.Visible = esAdministrador;
+            panel3.Visible = esAdministrador;
+
+            btncreacuent.Visible = true;
+            Label14.Visible = true;
+            btnlistacuenta.Visible = esAdministrador;
+            label8.Visible = esAdministrador;
+
+            if (esAdministrador)
+            {
+                picCategoria.Enabled = true;
+                picProducto.Enabled = true;
+                picClientes.Enabled = true;
+                picVentas.Enabled = true;
+                btncreacuent.Enabled = true;
+                btnlistacuenta.Enabled = true;
+            }
+            else
+            {
+                picClientes.Enabled = true;
+                picVentas.Enabled = true;
+                picCategoria.Enabled = false;
+                picProducto.Enabled = false;
+                btncreacuent.Enabled = true;
+                btnlistacuenta.Enabled = false;
+            }
         }
 
         private void LoadDashboard()
@@ -72,12 +114,18 @@ namespace SistemaInventario
 
         private void picCategoria_Click(object sender, EventArgs e)
         {
+            if (!picCategoria.Visible)
+                return;
+
             FormCategorias frm = new FormCategorias();
             frm.Show();
         }
 
         private void picProducto_Click(object sender, EventArgs e)
         {
+            if (!picProducto.Visible)
+                return;
+
             FormProductos frm = new FormProductos();
             frm.Show();
         }
@@ -90,11 +138,17 @@ namespace SistemaInventario
 
         private void picVentas_Click(object sender, EventArgs e)
         {
+            if (!picVentas.Enabled)
+                return;
+
             AlternarOpcionesVentas();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
+            if (!picVentas.Enabled)
+                return;
+
             AlternarOpcionesVentas();
         }
 
@@ -110,6 +164,9 @@ namespace SistemaInventario
 
         private void btnlistacuenta_Click(object sender, EventArgs e)
         {
+            if (!btnlistacuenta.Visible)
+                return;
+
             FormListadoVentas frm = new FormListadoVentas();
             frm.Show();
         }
