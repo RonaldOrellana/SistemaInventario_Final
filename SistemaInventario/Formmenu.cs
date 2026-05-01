@@ -140,5 +140,10 @@ namespace SistemaInventario
         {
             LoadDashboard();
         }
+
+        private void Formmenu_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

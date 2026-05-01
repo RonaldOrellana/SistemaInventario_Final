@@ -370,6 +370,7 @@
             this.Name = "Formmenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de inventario | Menu";
+            this.Load += new System.EventHandler(this.Formmenu_Load_1);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

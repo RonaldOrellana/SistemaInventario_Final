@@ -203,15 +203,28 @@ namespace SistemaInventario
                 return;
             }
 
+            string nombres = txtNombres.Text.Trim();
+            string apellidos = txtApellidos.Text.Trim();
+            string dui = txtDni.Text.Trim();
+            string sexo = cbSexo.SelectedItem.ToString();
+            string direccion = txtDireccion.Text.Trim();
+            string telefono = txtTelefono.Text.Trim();
+
+            int codigoActual = 0;
+            if (modoActual == Modo.Editar)
+            {
+                int.TryParse(txtCodigoCliente.Text, out codigoActual);
+            }
+
+            if (ExisteCliente(nombres, dui, codigoActual))
+            {
+                MessageBox.Show("Este cliente ya existe.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
-                string nombres = txtNombres.Text.Trim();
-                string apellidos = txtApellidos.Text.Trim();
-                string dui = txtDni.Text.Trim();
-                string sexo = cbSexo.SelectedItem.ToString();
-                string direccion = txtDireccion.Text.Trim();
-                string telefono = txtTelefono.Text.Trim();
-
                 if (modoActual == Modo.Nuevo)
                 {
                     ClienteRepository.Insert(nombres, apellidos, dui, sexo, direccion, telefono);
@@ -235,6 +248,31 @@ namespace SistemaInventario
                 MessageBox.Show("Error al guardar: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // ───────────────────── VALIDACIÓN DUPLICADOS ─────────────────────
+        private bool ExisteCliente(string nombres, string dui, int codigoClienteActual = 0)
+        {
+            DataTable dt = ClienteRepository.GetAll();
+            string nombreBuscado = nombres.Trim().ToLower();
+            string duiBuscado = dui.Trim();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                int codigoFila = row["CodigoCliente"] != DBNull.Value ? Convert.ToInt32(row["CodigoCliente"]) : 0;
+                if (codigoClienteActual > 0 && codigoFila == codigoClienteActual)
+                    continue;
+
+                string nom = row["Nombres"].ToString().Trim().ToLower();
+                string d = row["Dui"].ToString().Trim();
+
+                if (nom == nombreBuscado &&
+                    d == duiBuscado)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -339,7 +377,7 @@ namespace SistemaInventario
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-
+            BtnGuardar_Click(sender, e);
         }
     }
 }
