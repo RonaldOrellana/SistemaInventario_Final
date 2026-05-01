@@ -193,7 +193,7 @@ namespace SistemaInventario
 
             if (stockDisponible <= 0)
             {
-                MessageBox.Show("Este producto no tiene stock.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se puede guardar la venta por que el producto no tiene stock", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -368,7 +368,7 @@ namespace SistemaInventario
             bool habilitar = stockDisponible > 0;
 
             nudCantidad.Enabled = habilitar;
-            btnAgregarDetalle.Enabled = habilitar;
+            btnAgregarDetalle.Enabled = productoCodigo > 0;
 
             if (habilitar)
             {
@@ -420,7 +420,7 @@ namespace SistemaInventario
 
                 if (stockDisponible <= 0)
                 {
-                    MessageBox.Show("No se puede guardar la venta porque uno de los productos ya no tiene stock.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se puede guardar la venta por que el producto no tiene stock", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
