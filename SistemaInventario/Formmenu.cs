@@ -11,6 +11,7 @@ namespace SistemaInventario
         private readonly string rolUsuario;
 
         public Formmenu()
+
             : this(string.Empty)
         {
         }
